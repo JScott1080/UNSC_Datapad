@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Grifball">
+
+    <!-- TODO: Update blank fragment layout -->
+    <include layout="@layout/button_grid"/>
+    <include layout="@layout/music_grid"/>>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="350dp"
+        android:layout_height="75dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="90dp"
+        android:background="@drawable/button_pressed"
+        android:fontFamily="@font/orbitron_bold"
+        android:gravity="center"
+        android:text="GRIFBALL"
+        android:textColor="@color/cyan"
+        android:textSize="36dp" />
+
+</FrameLayout>
