@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_grifball_sounds"
+        android:title="Grifball"/>
+
+    <item
+        android:id="@+id/nav_rvb_sounds"
+        android:title="Red vs Blue (PG-13)"/>
+
+    <item
+        android:id="@+id/nav_booth_sounds"
+        android:title="Booth Board"/>
+
+    <!-- Main Soundtracks Category (Now Properly Contains Submenu) -->
+    <item
+        android:id="@+id/nav_soundtracks"
+        android:title="Soundtracks"
+        android:menuCategory="container"
+        android:showAsAction="never">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item android:id="@+id/nav_halo_ce" android:title="Halo CE"/>
+                <item android:id="@+id/nav_halo_2" android:title="Halo 2"/>
+                <item android:id="@+id/nav_halo_3" android:title="Halo 3"/>
+                <item android:id="@+id/nav_halo_reach" android:title="Halo Reach"/>
+            </group>
+        </menu>
+    </item>
+
+</menu>

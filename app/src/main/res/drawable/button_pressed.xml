@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Pressed State: Glow Intensifies -->
+    <item android:state_pressed="true">
+        <shape android:shape="rectangle">
+            <solid android:color="@android:color/transparent"/> <!-- Fully transparent overlay -->
+            <stroke android:width="10dp" android:color="#80CCFF"/> <!-- Glow becomes stronger -->
+            <corners android:radius="8dp"/>
+        </shape>
+    </item>
+
+    <!-- Default State -->
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="@color/black_transparent"/> <!-- Default dark background -->
+            <stroke android:width="5dp" android:color="@color/cyan"/>
+            <corners android:radius="8dp"/>
+        </shape>
+    </item>
+
+</selector>

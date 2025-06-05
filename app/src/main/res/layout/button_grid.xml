@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_vertical"
+    android:paddingLeft="10dp"
+    android:rowCount="3"
+    android:columnCount="3"
+    android:padding="40dp"
+    android:horizontalSpacing="16dp"
+    android:verticalSpacing="16dp">
+
+    <Button
+        android:id="@+id/btn_start"
+        android:layout_width="200dp"
+        android:layout_height="75dp"
+        android:layout_columnWeight="1"
+        android:layout_margin="10dp"
+        android:text="Game Start"
+        android:textColor="@color/cyan"
+        android:background="@drawable/button_glow"
+        android:padding="25dp"/>
+
+    <Button
+        android:id="@+id/btn_end"
+        android:layout_width="200dp"
+        android:layout_height="75dp"
+        android:layout_columnWeight="1"
+        android:layout_margin="10dp"
+        android:text="Game Over"
+        android:textColor="@color/cyan"
+        android:background="@drawable/button_glow"
+        android:padding="25dp"/>
+
+    <Button
+        android:id="@+id/btn_goal"
+        android:layout_width="200dp"
+        android:layout_height="75dp"
+        android:layout_columnWeight="1"
+        android:layout_margin="10dp"
+        android:text="GOAL!!!"
+        android:textColor="@color/cyan"
+        android:background="@drawable/button_glow"
+        android:padding="25dp"/>
+
+    <Button
+        android:id="@+id/btn_hammer"
+        android:layout_width="200dp"
+        android:layout_height="75dp"
+        android:layout_columnWeight="1"
+        android:layout_margin="10dp"
+        android:text="Gravity Hammer"
+        android:textColor="@color/cyan"
+        android:background="@drawable/button_glow"
+        android:padding="25dp"/>
+
+</GridLayout>

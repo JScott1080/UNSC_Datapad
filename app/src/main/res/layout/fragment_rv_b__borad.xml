@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Add Sound Button Outside LinearLayout -->
+    <Button
+        android:id="@+id/addRvbSoundButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add RvB Sound"
+        android:layout_margin="90dp"
+        android:background="@drawable/button_background"
+        android:padding="8dp">
+
+    </Button>
+
+    <!-- Booth Soundboard Container -->
+    <LinearLayout
+        android:id="@+id/rvbContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="350dp"
+            android:layout_height="75dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="90dp"
+            android:background="@drawable/button_pressed"
+            android:fontFamily="@font/orbitron_bold"
+            android:gravity="center"
+            android:text="RvB (PG-13)"
+            android:textColor="@color/cyan"
+            android:textSize="36dp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvbRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:scrollbars="vertical"
+            android:layout_margin="10dp"/>
+    </LinearLayout>
+
+</FrameLayout>

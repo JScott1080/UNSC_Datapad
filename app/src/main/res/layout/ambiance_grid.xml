@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:stretchColumns="*"
+    android:padding="40dp">
+
+
+    <TableRow>
+        <Button
+            android:id="@+id/btn_package"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="The Package"
+            android:textColor="@color/cyan"
+            android:background="@drawable/button_glow"
+            android:padding="25dp"/>
+
+        <Button
+            android:id="@+id/btn_osiris"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="Osiris"
+            android:textColor="@color/cyan"
+            android:background="@drawable/button_glow"
+            android:padding="25dp"/>
+
+        <Button
+            android:id="@+id/btn_spear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="Tip of the Spear"
+            android:textColor="@color/cyan"
+            android:background="@drawable/button_glow"
+            android:padding="25dp"/>
+
+        <Button
+            android:id="@+id/btn_nightfall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="Nightfall"
+            android:textColor="@color/cyan"
+            android:background="@drawable/button_glow"
+            android:padding="25dp"/>
+
+        <Button
+            android:id="@+id/btn_exodus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="Exodus"
+            android:textColor="@color/cyan"
+            android:background="@drawable/button_glow"
+            android:padding="25dp"/>
+    </TableRow>
+
+    <TableRow>
+        <Button
+                android:id="@+id/btn_dawn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="Forward Unto Dawn"
+                android:textColor="@color/cyan"
+                android:background="@drawable/button_glow"
+                android:padding="25dp"/>
+
+            <Button
+                android:id="@+id/btn_midnight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="UNSC Infinity"
+                android:textColor="@color/cyan"
+                android:background="@drawable/button_glow"
+                android:padding="25dp"/>
+
+            <Button
+                android:id="@+id/btn_autumn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="Pillar of Autumn"
+                android:textColor="@color/cyan"
+                android:background="@drawable/button_glow"
+                android:padding="25dp"/>
+
+            <Button
+                android:id="@+id/btn_cairo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="Cairo"
+                android:textColor="@color/cyan"
+                android:background="@drawable/button_glow"
+                android:padding="25dp"/>
+
+            <Button
+                android:id="@+id/btn_armory"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="Armory"
+                android:textColor="@color/cyan"
+                android:background="@drawable/button_glow"
+                android:padding="25dp"/>
+    </TableRow>
+
+    <TableRow>
+        <Button
+            android:id="@+id/btn_requium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="Requium"
+            android:textColor="@color/cyan"
+            android:background="@drawable/button_glow"
+            android:padding="25dp"/>
+
+        <Button
+            android:id="@+id/btn_halo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="Halo (control)"
+            android:textColor="@color/cyan"
+            android:background="@drawable/button_glow"
+            android:padding="25dp"/>
+
+        <Button
+            android:id="@+id/btn_forerunner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="Forerunner"
+            android:textColor="@color/cyan"
+            android:background="@drawable/button_glow"
+            android:padding="25dp"/>
+
+        <Button
+            android:id="@+id/btn_flood"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="Oracle (Flood)"
+            android:textColor="@color/cyan"
+            android:background="@drawable/button_glow"
+            android:padding="25dp"/>
+
+        <Button
+            android:id="@+id/btn_corvette"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="Solice"
+            android:textColor="@color/cyan"
+            android:background="@drawable/button_glow"
+            android:padding="25dp"/>
+
+    </TableRow>
+
+</TableLayout>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Main Menu Grid -->
+    <GridLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:rowCount="2"
+        android:columnCount="3"
+        android:padding="10dp"
+        android:horizontalSpacing="16dp"
+        android:verticalSpacing="16dp">
+
+        <!-- Fragment Buttons -->
+        <Button
+            android:id="@+id/btn_grifball"
+            android:text="Grifball Board"
+            android:layout_width="200dp"
+            android:layout_height="75dp"
+            android:padding="25dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/button_glow"/>
+
+        <Button
+            android:id="@+id/btn_booth"
+            android:text="Booth Board"
+            android:layout_width="200dp"
+            android:layout_height="75dp"
+            android:padding="25dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/button_glow"/>
+
+        <Button
+            android:id="@+id/btn_rvb"
+            android:text="RvB Board"
+            android:layout_width="200dp"
+            android:layout_height="75dp"
+            android:padding="25dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/button_glow"/>
+
+        <Button
+            android:id="@+id/btn_soundtrack"
+            android:text="Soundtracks"
+            android:layout_width="200dp"
+            android:layout_height="75dp"
+            android:padding="25dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/button_glow"/>
+
+        <Button
+            android:id="@+id/btn_ambiance"
+            android:text="Ambiance Control"
+            android:layout_width="200dp"
+            android:layout_height="75dp"
+            android:padding="25dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/button_glow"/>
+    </GridLayout>
+</FrameLayout>

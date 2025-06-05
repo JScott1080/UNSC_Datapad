@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/activity_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/wallpaper">
+
+    <!-- Ensure the background image is properly rendered -->
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/wallpaper"/>
+
+    <include
+        android:id="@+id/main_menu_container"
+        layout="@layout/main_menu_container"/>
+    <include layout="@layout/spinner_menu"/>
+    <include
+        android:id="@+id/playback_display"
+        layout="@layout/playback_diaplay"/>
+
+</FrameLayout>

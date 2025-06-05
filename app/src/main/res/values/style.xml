@@ -1,0 +1,24 @@
+<resources>
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowBackground">@drawable/wallpaper</item>
+        <item name="android:textColorPrimary">@color/cyan</item>
+        <item name="android:buttonStyle">@style/FuturisticButton</item>
+    </style>
+
+    <style name="FuturisticButton" parent="@android:style/Widget.Button">
+        <item name="android:background">@drawable/button_background</item>
+        <item name="android:textColor">@color/cyan</item>
+        <item name="android:fontFamily">@font/orbitron_bold</item>
+        <item name="android:strokeColor">@color/cyan</item> <!-- Explicit stroke color -->
+    </style>
+
+    <style name="CustomSpinnerStyle" parent="Theme.MaterialComponents.Light.DarkActionBar">
+        <item name="android:popupBackground">@android:color/transparent</item> <!-- Removes white background -->
+        <item name="android:background">@drawable/button_glow</item> <!-- Optional glow effect -->
+    </style>
+
+
+
+
+
+</resources>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Outer Glow Effect -->
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="@android:color/transparent"/> <!-- Keeps background clear -->
+            <stroke android:width="12dp" android:color="#55CCFF"/> <!-- Soft cyan glow -->
+            <corners android:radius="12dp"/>
+        </shape>
+    </item>
+
+    <!-- Inner Button Layer -->
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="@color/black_transparent"/> <!-- Maintains dark button background -->
+            <stroke android:width="5dp" android:color="@color/cyan"/>
+            <corners android:radius="8dp"/>
+        </shape>
+    </item>
+
+</layer-list>
