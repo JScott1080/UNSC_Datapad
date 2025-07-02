@@ -4,18 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- Add Sound Button Outside LinearLayout -->
-    <Button
-        android:id="@+id/addRvbSoundButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Add RvB Sound"
-        android:layout_margin="90dp"
-        android:background="@drawable/button_background"
-        android:padding="8dp">
-
-    </Button>
-
     <!-- Booth Soundboard Container -->
     <LinearLayout
         android:id="@+id/rvbContainer"

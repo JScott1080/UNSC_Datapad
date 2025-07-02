@@ -32,6 +32,8 @@ import com.example.unsc_datapad.fragments.BoothBoardFragment
 import com.example.unsc_datapad.fragments.RvB_BoradFragment
 import java.io.File
 import java.io.IOException
+import java.util.LinkedList
+import java.util.Queue
 
 private const val REQUEST_CODE = 1170 // ✅ Assign a unique value
 
@@ -206,24 +208,42 @@ class MainActivity : AppCompatActivity() {
         soundtrackPlayer?.release()
     }
 
+    private val soundQueue: Queue<String> = LinkedList() // ✅ Queue for follow-up sounds
 
-    fun playSoundbyte(sound: SoundItem) {
-        try {
-            val mediaPlayer = MediaPlayer()
+    fun playSoundbyte(fileName: String) {
+        if (soundboardClip?.isPlaying == true) {
+            soundQueue.add(fileName) // ✅ Add to queue instead of interrupting
+            return
+        }
 
-            if (sound.isAsset) {
-                val afd = assets.openFd(sound.filePath) // ✅ Load from `assets/`
-                mediaPlayer.setDataSource(afd.fileDescriptor, afd.startOffset, afd.length)
-            } else {
-                mediaPlayer.setDataSource(File(filesDir, sound.filePath).absolutePath) // ✅ Load from internal storage
+        // ✅ Lower background music volume before playing soundbyte
+        soundtrackPlayer?.setVolume(0.2f, 0.2f) // ✅ Adjust both left & right channels
+
+        val afd = assetManager.openFd(fileName)
+        soundboardClip = MediaPlayer().apply {
+            setDataSource(afd.fileDescriptor, afd.startOffset, afd.length)
+            prepare()
+            start()
+
+            setOnCompletionListener {
+                soundboardClip?.release()
+                soundboardClip = null
+
+                // ✅ Restore music volume after soundbyte finishes
+                soundtrackPlayer?.setVolume(.35f, .35f) // ✅ Reset to normal level
+
+                playNextSound()
             }
-
-            mediaPlayer.prepare()
-            mediaPlayer.start()
-        } catch (e: IOException) {
-            Log.e("MainActivity", "Error playing sound: ${e.message}")
         }
     }
+
+    fun playNextSound() {
+        val nextSound = soundQueue.poll() // ✅ Grab the next sound from queue
+        if (nextSound != null) {
+            playSoundbyte(nextSound) // ✅ Play it once the current sound finishes
+        }
+    }
+
 
 
     fun playAmbiance(soundRes: String) {
@@ -293,7 +313,7 @@ class MainActivity : AppCompatActivity() {
 
         soundtrackPlayer = MediaPlayer().apply {
             setDataSource(afd.fileDescriptor, afd.startOffset, afd.length)
-            setVolume(.2f, .2f)
+            setVolume(.35f, .35f)
             prepare()
             setOnCompletionListener { onTrackFinished() }
             start()
@@ -387,21 +407,6 @@ class MainActivity : AppCompatActivity() {
             .replace(R.id.activity_container, fragment)
             .addToBackStack(null)
             .commit()
-    }
-    fun getCurrentFragment(): Fragment? {
-        return supportFragmentManager.fragments.lastOrNull() // ✅ Gets the top-most active fragment
-    }
-
-    val pickSoundFile = registerForActivityResult(ActivityResultContracts.OpenDocument()) { uri ->
-        uri?.let {
-            val fileName = uri.lastPathSegment ?: "New Sound"
-            val currentFragment = getCurrentFragment() // ✅ Get active fragment dynamically
-
-            when (currentFragment) {
-                is BoothBoardFragment -> currentFragment.addBoothSound(fileName, uri.toString()) // ✅ Adds sound to Booth
-                is RvB_BoradFragment -> currentFragment.addRvBSound(fileName, uri.toString())   // ✅ Adds sound to RvB
-            }
-        }
     }
 
     @RequiresApi(Build.VERSION_CODES.R)

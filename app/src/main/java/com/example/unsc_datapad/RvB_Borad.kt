@@ -32,9 +32,6 @@ class RvB_BoradFragment : Fragment(R.layout.fragment_rv_b__borad) {
         rvbRecyclerView.adapter = SoundboardAdapter(rvbSounds) { sound -> playrvbSound(sound) }
 
         loadRvBSounds() // ✅ Load sound assets
-        view.findViewById<Button>(R.id.addRvbSoundButton).setOnClickListener {
-            (activity as? MainActivity)?.pickSoundFile?.launch(arrayOf("audio/*")) // ✅ Opens sound picker
-        }
     }
 
     private fun loadRvBSounds() {
@@ -45,12 +42,7 @@ class RvB_BoradFragment : Fragment(R.layout.fragment_rv_b__borad) {
     }
 
     private fun playrvbSound(sound: SoundItem) {
-        (activity as? MainActivity)?.playSoundbyte(sound)
-    }
-
-    fun addRvBSound(fileName: String, filePath: String) {
-        rvbSounds.add(SoundItem(fileName, filePath, false)) // ✅ Store the new sound
-        rvbRecyclerView.adapter?.notifyDataSetChanged() // ✅ Refresh UI to show new sound
+        (activity as? MainActivity)?.playSoundbyte(sound.filePath)
     }
 
 }

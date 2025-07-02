@@ -12,4 +12,6 @@
 /captures
 .externalNativeBuild
 .cxx
+.wav
+.mp3
 local.properties
