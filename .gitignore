@@ -12,7 +12,7 @@
 /captures
 .externalNativeBuild
 .cxx
-.wav
-.mp3
+*.wav
+*.mp3
 .apk
 local.properties
