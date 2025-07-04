@@ -219,22 +219,29 @@ class MainActivity : AppCompatActivity() {
         // ✅ Lower background music volume before playing soundbyte
         soundtrackPlayer?.setVolume(0.2f, 0.2f) // ✅ Adjust both left & right channels
 
-        val afd = assetManager.openFd(fileName)
-        soundboardClip = MediaPlayer().apply {
-            setDataSource(afd.fileDescriptor, afd.startOffset, afd.length)
-            prepare()
-            start()
+        try {
+            val afd = assetManager.openFd(fileName)
+            soundboardClip = MediaPlayer().apply {
+                setDataSource(afd.fileDescriptor, afd.startOffset, afd.length)
+                prepare()
+                start()
 
-            setOnCompletionListener {
-                soundboardClip?.release()
-                soundboardClip = null
+                setOnCompletionListener {
+                    soundboardClip?.release()
+                    soundboardClip = null
 
-                // ✅ Restore music volume after soundbyte finishes
-                soundtrackPlayer?.setVolume(.35f, .35f) // ✅ Reset to normal level
+                    // ✅ Restore music volume after soundbyte finishes
+                    soundtrackPlayer?.setVolume(.35f, .35f) // ✅ Reset to normal level
 
-                playNextSound()
+                    playNextSound()
+                }
             }
+        } catch (e: Exception) {
+            e.printStackTrace() // Log missing asset or playback error
+            soundtrackPlayer?.setVolume(0.35f, 0.35f)
+            playNextSound() // Continue queue even if current sound fails
         }
+
     }
 
     fun playNextSound() {
@@ -254,14 +261,19 @@ class MainActivity : AppCompatActivity() {
             release()
             ambiancePlayer = null
         }
-
-        val afd = assetManager.openFd(soundRes)
-        ambiancePlayer = MediaPlayer().apply {
-            setDataSource(afd.fileDescriptor, afd.startOffset, afd.length)
-            prepare()
-            isLooping = true
-            start()
+        try {
+            val afd = assetManager.openFd(soundRes)
+            ambiancePlayer = MediaPlayer().apply {
+                setDataSource(afd.fileDescriptor, afd.startOffset, afd.length)
+                prepare()
+                isLooping = true
+                start()
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+            currentAmbiance = null // Reset if loading fails
         }
+
 
         currentAmbiance = soundRes
         updateCurrentlyPlayingUI() // ✅ Refresh UI when ambiance starts
@@ -303,23 +315,29 @@ class MainActivity : AppCompatActivity() {
         if (soundtrackQueue.isEmpty()) return
 
         val trackRes = soundtrackQueue[currentTrackIndex]
-        val afd = assetManager.openFd(trackRes)
 
-        soundtrackPlayer?.apply {
-            stop()    // ✅ Ensure playback stops cleanly
-            reset()   // ✅ Reset before release to prevent unexpected behavior
-            release() // ✅ Properly release resources
-        }
+        try {
+            val afd = assetManager.openFd(trackRes)
 
-        soundtrackPlayer = MediaPlayer().apply {
-            setDataSource(afd.fileDescriptor, afd.startOffset, afd.length)
-            setVolume(.35f, .35f)
-            prepare()
-            setOnCompletionListener { onTrackFinished() }
-            start()
+            soundtrackPlayer?.apply {
+                stop()    // ✅ Ensure playback stops cleanly
+                reset()   // ✅ Reset before release to prevent unexpected behavior
+                release() // ✅ Properly release resources
+            }
+
+            soundtrackPlayer = MediaPlayer().apply {
+                setDataSource(afd.fileDescriptor, afd.startOffset, afd.length)
+                setVolume(.35f, .35f)
+                prepare()
+                setOnCompletionListener { onTrackFinished() }
+                start()
+            }
+            currentPlayingSong = trackRes
+            updateCurrentlyPlayingUI()
+        } catch (e: Exception) {
+            e.printStackTrace()
+            onTrackFinished() // Skip to next track if this one fails
         }
-        currentPlayingSong = trackRes
-        updateCurrentlyPlayingUI()
     }
 
     private var shuffleQueue = mutableListOf<String>() // ✅ Stores shuffled tracks

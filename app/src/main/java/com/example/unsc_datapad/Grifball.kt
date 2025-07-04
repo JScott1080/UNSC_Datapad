@@ -19,11 +19,27 @@ class GrifballFragment : Fragment(R.layout.fragment_grifball) {
     private lateinit var assetManager: AssetManager
 
 
-    private val goal = mutableListOf(R.raw.medal1, R.raw.medal2, R.raw.medal3)
-    private val hammer = mutableListOf(R.raw.hammer1, R.raw.hammer2, R.raw.hammer3)
-    private val start = R.raw.countdown
-    private val end = R.raw.victory
+    // Utility function to safely resolve raw resources by name
+    private fun getSafeRawResource(name: String): Int {
+        val resId = resources.getIdentifier(name, "raw", "unsc_datapad")
+        return if (resId != 0) resId else 0
+    }
 
+    // Refactored resource lists
+    private val goal = mutableListOf(
+        getSafeRawResource("medal1"),
+        getSafeRawResource("medal2"),
+        getSafeRawResource("medal3")
+    )
+
+    private val hammer = mutableListOf(
+        getSafeRawResource("hammer1"),
+        getSafeRawResource("hammer2"),
+        getSafeRawResource("hammer3")
+    )
+
+    private val start = getSafeRawResource("countdown")
+    private val end = getSafeRawResource("victory")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -92,14 +108,16 @@ class GrifballFragment : Fragment(R.layout.fragment_grifball) {
 
 
     private fun playSound(soundRes: Int) {
-        mediaPlayer?.release()
-        mediaPlayer = MediaPlayer.create(requireContext(), soundRes).apply {
-            start()
+        if(soundRes != 0) {
+            mediaPlayer?.release()
+            mediaPlayer = MediaPlayer.create(requireContext(), soundRes).apply {
+                start()
+            }
         }
     }
 
     private fun playBackground(soundRes: String) {
-        if (currentTrackId == soundRes) return
+        if (currentTrackId == soundRes || soundRes == "") return
 
         backgroundMusic?.apply {
             stop()
