@@ -29,12 +29,6 @@ class GrifballFragment : Fragment(R.layout.fragment_grifball) {
 
         assetManager = requireContext().assets
 
-        /*val newMusicRes = R.raw.background_music1
-        backgroundMusic = MediaPlayer.create(requireContext(), newMusicRes).apply {
-            isLooping = true
-            start()
-        }
-        currentTrackId = newMusicRes*/
         val afd = assetManager.openFd("ambiance/the_package.mp3")
         backgroundMusic?.apply {
             stop()
@@ -49,10 +43,10 @@ class GrifballFragment : Fragment(R.layout.fragment_grifball) {
         }
         currentTrackId = "ambiance/the_package.mp3"
 
-        setupSoundButton(view, R.id.btn_goal, goal.random())
+        setupRandomSoundButton(view, R.id.btn_goal, goal)
         setupSoundButton(view, R.id.btn_start, start)
         setupSoundButton(view, R.id.btn_end, end)
-        setupSoundButton(view, R.id.btn_hammer, hammer.random())
+        setupRandomSoundButton(view, R.id.btn_hammer, hammer)
         setupBackgroundbutton(view, R.id.btn_back1, "ambiance/the_package.mp3")
         setupBackgroundbutton(view, R.id.btn_back2, "ambiance/the_package_music.mp3")
     }
@@ -61,6 +55,19 @@ class GrifballFragment : Fragment(R.layout.fragment_grifball) {
         val button = view.findViewById<Button>(buttonId)
         button.setOnClickListener {
             playSound(soundRes)
+            val pulseAnimation = AnimationUtils.loadAnimation(requireContext(), R.anim.pulse_glow)
+            button.startAnimation(pulseAnimation)
+            Handler(Looper.getMainLooper()).postDelayed({
+                val fadeOutAnimation = AnimationUtils.loadAnimation(requireContext(), R.anim.fade_out)
+                button.startAnimation(fadeOutAnimation)
+            }, 1000)
+        }
+    }
+
+    private fun setupRandomSoundButton(view: View, buttonId: Int, soundRes: MutableList<Int>) {
+        val button = view.findViewById<Button>(buttonId)
+        button.setOnClickListener {
+            playSound(soundRes.random())
             val pulseAnimation = AnimationUtils.loadAnimation(requireContext(), R.anim.pulse_glow)
             button.startAnimation(pulseAnimation)
             Handler(Looper.getMainLooper()).postDelayed({
