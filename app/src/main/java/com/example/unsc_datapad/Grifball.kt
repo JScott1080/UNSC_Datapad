@@ -19,31 +19,37 @@ class GrifballFragment : Fragment(R.layout.fragment_grifball) {
     private lateinit var assetManager: AssetManager
 
 
-    // Utility function to safely resolve raw resources by name
     private fun getSafeRawResource(name: String): Int {
-        val resId = resources.getIdentifier(name, "raw", "unsc_datapad")
+        val resId = resources.getIdentifier(name, "raw", requireContext().packageName)
         return if (resId != 0) resId else 0
     }
 
-    // Refactored resource lists
-    private val goal = mutableListOf(
-        getSafeRawResource("medal1"),
-        getSafeRawResource("medal2"),
-        getSafeRawResource("medal3")
-    )
+    private val goal = mutableListOf<Int>()
+    private val hammer = mutableListOf<Int>()
+    private var start = 0
+    private var end = 0
 
-    private val hammer = mutableListOf(
-        getSafeRawResource("hammer1"),
-        getSafeRawResource("hammer2"),
-        getSafeRawResource("hammer3")
-    )
 
-    private val start = getSafeRawResource("countdown")
-    private val end = getSafeRawResource("victory")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         assetManager = requireContext().assets
+
+        goal.addAll(listOf(
+            getSafeRawResource("medal1"),
+            getSafeRawResource("medal2"),
+            getSafeRawResource("medal3")
+        ))
+
+        hammer.addAll(listOf(
+            getSafeRawResource("hammer1"),
+            getSafeRawResource("hammer2"),
+            getSafeRawResource("hammer3")
+        ))
+
+        start = getSafeRawResource("countdown")
+        end = getSafeRawResource("victory")
+
 
         val afd = assetManager.openFd("ambiance/the_package.mp3")
         backgroundMusic?.apply {
